@@ -84,6 +84,19 @@ exports.runProgram = function (port) {
     app.put('/cards', cardRouter.updateCard)
     app.delete('/cards/:card_number', cardRouter.deleteCard)
 
+    app.get('/cardsZip/:zip_code', cardRouter.getCardZip)
+
+    app.get('/cardsStreet/:street', cardRouter.getCardStreet)
+
+
+    app.get('/cardsName/:cust_name', cardRouter.getCardName)
+    app.get('/cardsSurname/:cust_surname', cardRouter.getCardSurname)
+    app.get('/cardsPhone/:cust_phone_number', cardRouter.getCardPhone)
+    app.get('/cardsCity/:city', cardRouter.getCardCity)
+    app.get('/cardsPatronymic/:cust_patronymic', cardRouter.getCardPatronymic)
+    app.get('/cardsPersent/:persent', cardRouter.getCardPersent)
+    app.get('/sEARCH_USERS_WHO_BOUGHT_PRODUCT/:id_product', cardRouter.sEARCH_USERS_WHO_BOUGHT_PRODUCT)
+
     //sales
     app.get('/sales', saleRouter.getAllSales)
     app.post('/salesid', saleRouter.getSale)

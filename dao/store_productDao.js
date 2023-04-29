@@ -171,7 +171,7 @@ console.log("a")
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} WHERE id_product IN (SELECT id_product FROM ${db.STORE_PRODUCT_DB} WHERE promotional_product =0) ORDER BY 'product_name'`,
+                `SELECT * FROM ${db.PRODUCT_DB} WHERE id_product IN (SELECT id_product FROM ${db.STORE_PRODUCT_DB} WHERE promotional_product ='0') ORDER BY 'product_name'`,
 
                 (err, results) => {
                     if (err) {
