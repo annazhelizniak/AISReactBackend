@@ -57,11 +57,11 @@ exports.ProductsDao = class {
                 `
                     UPDATE ${db.PRODUCT_DB} 
                     SET
-                    category_number = ${category_number}
-                    product_name = ${product_name}
-                    producer = ${producer}
-                    characteristics = ${characteristics}
-                    WHERE id_product = ${id_product}
+                    category_number = '${category_number}'
+                    product_name = '${product_name}'
+                    producer = '${producer}'
+                    characteristics = '${characteristics}'
+                    WHERE id_product = '${id_product}'
                 `,
                 (err, results) => {
                     if (err) {
