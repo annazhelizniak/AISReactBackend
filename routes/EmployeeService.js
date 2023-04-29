@@ -82,6 +82,7 @@ exports.UsersRouter = class {
 
     updateUser(req, res) {
         let internalDAO = dao
+        console.log(req.body)
         if (req.body.id_employee && req.body.empl_surname && req.body.empl_name && req.body.empl_patronymic && req.body.empl_role && req.body.salary && req.body.date_of_birth && req.body.date_of_start && req.body.phone_number && req.body.city && req.body.street && req.body.zip_code && req.body.email && req.body.password) {
             (async () => {
                 await internalDAO.updateUser(req.body.id_employee,req.body.empl_surname,req.body.empl_name,req.body.empl_patronymic,req.body.empl_role,req.body.salary,req.body.date_of_birth,req.body.date_of_start,req.body.phone_number,req.body.city,req.body.street,req.body.zip_code, req.body.email,req.body.password)
