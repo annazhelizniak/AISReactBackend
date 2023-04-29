@@ -32,7 +32,7 @@ exports.runProgram = function (port) {
     app.post('/checkuser', usersRouter.credentialsAreValid)
     app.get('/allkasirs', usersRouter.gET_ALL_KASIRS)
 
-    //app.post('/findphoneaddbysurname', usersRouter.gET_ALL_KASIRS)
+    app.get('/findphoneaddbysurname', usersRouter.fIND_PHONE_ADD_BY_SURNAME)
 
 
 
