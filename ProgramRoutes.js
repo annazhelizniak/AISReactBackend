@@ -69,7 +69,13 @@ exports.runProgram = function (port) {
     app.put('/products', productRouter.updateProduct)
     app.delete('/products/:id_product', productRouter.deleteProduct)
 
+//todo test
 
+    app.get('/productsName/:product_name', productRouter.getProductsByName)
+
+    app.get('/productsProducer/:producer', productRouter.getProductsByProducer)
+
+    app.get('/productsCategory/:category_number', productRouter.getProductsFromCategory)
     //checks
     app.get('/checks', checkRouter.getAllChecks)
     app.get('/checks/:check_number', checkRouter.getCheck)
@@ -95,6 +101,7 @@ exports.runProgram = function (port) {
     app.get('/cardsCity/:city', cardRouter.getCardCity)
     app.get('/cardsPatronymic/:cust_patronymic', cardRouter.getCardPatronymic)
     app.get('/cardsPersent/:persent', cardRouter.getCardPersent)
+    //todo test
     app.get('/sEARCH_USERS_WHO_BOUGHT_PRODUCT/:id_product', cardRouter.sEARCH_USERS_WHO_BOUGHT_PRODUCT)
 
     //sales

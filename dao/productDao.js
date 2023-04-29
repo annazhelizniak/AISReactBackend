@@ -134,7 +134,7 @@ exports.ProductsDao = class {
     getProductsByProducer(producer) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} WHERE producer=${producer}`,
+                `SELECT * FROM ${db.PRODUCT_DB} WHERE producer='${producer}'`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -149,7 +149,7 @@ exports.ProductsDao = class {
     getProductsFromCategory(category) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} WHERE category=${category} ORDER BY product_name`,
+                `SELECT * FROM ${db.PRODUCT_DB} WHERE category='${category}' ORDER BY product_name`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -160,10 +160,10 @@ exports.ProductsDao = class {
             )
         })
     }
-    getProductsWithName(name) {
+    getProductsByName(name) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} WHERE product_name=${name}`,
+                `SELECT * FROM ${db.PRODUCT_DB} WHERE product_name='${name}'`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
