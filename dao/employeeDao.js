@@ -96,13 +96,13 @@ exports.EmployeeDAO = class {
 
         return new Promise(function (resolve) {
             db.connection.query(
-                `INSERT INTO ${db.EMPLOYEE_DB} (empl_surname,empl_name,empl_patronymic,empl_role,salary,date_of_birth,date_of_start,phone_number,city,street,zip_code,email,password) VALUES ('${id_employee}','${empl_surname}','${empl_name}','${empl_patronymic}','${empl_role}','${salary}','${date_of_birth}','${date_of_start}','${phone_number}','${city}','${street}','${zip_code}','${email}','${password}')`,
+                `INSERT INTO ${db.EMPLOYEE_DB} (empl_surname,empl_name,empl_patronymic,empl_role,salary,date_of_birth,date_of_start,phone_number,city,street,zip_code,email,password) VALUES ('${empl_surname}','${empl_name}','${empl_patronymic}','${empl_role}','${salary}','${date_of_birth}','${date_of_start}','${phone_number}','${city}','${street}','${zip_code}','${email}','${password}')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
                         resolve(err)
                     }
-                    console.log(results)
+                    console.log("results")
                     resolve(results)
                 }
             )

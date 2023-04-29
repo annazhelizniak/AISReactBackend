@@ -28,10 +28,8 @@ exports.UsersRouter = class {
         }
     }
     addUser(req, res) {
-        let internalDAO = dao
-        if (req.body.id_employee) {
             (async () => {
-                await internalDAO.addUser(req.body.id_employee,req.body.empl_surname,
+                await dao.addUser(req.body.empl_surname,
                             req.body.empl_name,req.body.empl_patronymic,
                             req.body.empl_role,req.body.salary,
                             req.body.date_of_birth,req.body.date_of_start,
@@ -40,9 +38,6 @@ exports.UsersRouter = class {
                             req.body.email,req.body.password)
                 res.send("Success")
             })()
-        } else {
-            res.send(req.body)
-        }
         // (async () => {
         //     await dao.addUser(req.params.id_employee,req.params.empl_surname,
         //         req.params.empl_name,req.params.empl_patronymic,
