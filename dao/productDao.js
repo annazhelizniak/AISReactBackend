@@ -38,7 +38,7 @@ exports.ProductsDao = class {
 
         return new Promise(function (resolve) {
             db.connection.query(
-                `INSERT INTO ${db.PRODUCT_DB} (category_number, product_name, producer,characteristics)) VALUES ('${category_number}, ${product_name}, ${producer},${characteristics})')`,
+                `INSERT INTO ${db.PRODUCT_DB} (category_number, product_name, producer,characteristics) VALUES ('${category_number}, ${product_name}, ${producer},${characteristics})')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
