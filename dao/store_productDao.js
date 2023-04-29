@@ -78,7 +78,7 @@ exports.Store_productDao = class {
                     selling_price = '${selling_price}',
                     products_number = '${products_number}',
                     promotional_product = '${promotional_product}'
-                    WHERE upc = ${upc}
+                    WHERE upc = '${upc}'
                 `,
                 (err, results) => {
                     if (err) {
