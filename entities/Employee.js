@@ -1,4 +1,4 @@
-exports.Category = class {
+exports.Employee = class {
     id_employee
     empl_surname
     empl_name

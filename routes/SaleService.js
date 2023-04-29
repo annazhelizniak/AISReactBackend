@@ -37,14 +37,14 @@ exports.SaleRouter = class {
     }
 
     deleteSale(req, res) {
-        let internalDAO = dao
-        if (req.params.upc && req.params.check_number) {
+        let internalDAO = dao;
+        if (req.body.upc && req.body.check_number) {
             (async () => {
-                await internalDAO.deleteSale(req.params.upc && req.params.check_number)
-                res.send("Success")
-            })()
+                await internalDAO.deleteSale({upc: req.body.upc, check_number: req.body.check_number});
+                res.send("Success");
+            })();
         } else {
-            res.send(req.params)
+            res.send(req.params);
         }
     }
 

@@ -82,7 +82,7 @@ exports.runProgram = function (port) {
     app.post('/salesid', saleRouter.getSale)
     app.post('/sales', saleRouter.addSale)
     app.put('/sales', saleRouter.updateSale)
-    app.delete('/sales/:upc/:check_number', saleRouter.deleteSale)
+    app.delete('/sales', saleRouter.deleteSale)
 
     app.listen(port, () => {
         console.log("Server is listening on port " + port)
