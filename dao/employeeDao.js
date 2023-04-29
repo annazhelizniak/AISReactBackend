@@ -102,6 +102,7 @@ exports.EmployeeDAO = class {
                         console.log(err)
                         resolve(err)
                     }
+                    console.log(results)
                     resolve(results)
                 }
             )
