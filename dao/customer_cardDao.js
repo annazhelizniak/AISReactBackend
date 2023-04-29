@@ -32,10 +32,10 @@ exports.CustomerCardDao = class {
                 })
         })
     }
-    addCard(card_number,cust_surname,cust_name,cust_patronymic,phone_number,city,street,zip_code,percent) {
+    addCard(cust_surname,cust_name,cust_patronymic,phone_number,city,street,zip_code,percent) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `INSERT INTO ${db.CUSTOMER_CARD_DB} (card_number,cust_surname,cust_name,cust_patronymic,phone_number,city,street,zip_code,percent) VALUES ('${card_number}','${cust_surname}','${cust_name}','${cust_patronymic}','${phone_number}','${city}','${street}','${zip_code}','${percent}')`,
+                `INSERT INTO ${db.CUSTOMER_CARD_DB} (cust_surname,cust_name,cust_patronymic,phone_number,city,street,zip_code,percent) VALUES ('${card_number}','${cust_surname}','${cust_name}','${cust_patronymic}','${phone_number}','${city}','${street}','${zip_code}','${percent}')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)

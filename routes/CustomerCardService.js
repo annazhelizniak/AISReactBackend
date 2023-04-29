@@ -105,9 +105,9 @@ exports.CustomerCardRouter = class {
     }
 
     addCard(req, res) {
-        if (req.body.card_number && req.body.cust_surname && req.body.cust_name && req.body.phone_number && req.body.percent) {
+        if (req.body.cust_surname && req.body.cust_name && req.body.phone_number && req.body.percent) {
             (async () => {
-                await dao.addCard(req.body.card_number,req.body.cust_surname,req.body.cust_name,req.body.cust_patronymic,req.body.phone_number,req.body.city,req.body.street,req.body.zip_code,req.body.percent)
+                await dao.addCard(req.body.cust_surname,req.body.cust_name,req.body.cust_patronymic,req.body.phone_number,req.body.city,req.body.street,req.body.zip_code,req.body.percent)
                 res.send(req.body)
             })()
         } else {
