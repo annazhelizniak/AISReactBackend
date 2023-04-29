@@ -46,7 +46,7 @@ exports.ProductsRouter = class {
                 res.send("Success")
             })()
         } else {
-            res.send(req.params.id_product)
+            res.send(req.params)
         }
     }
 
