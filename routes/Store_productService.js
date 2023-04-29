@@ -56,11 +56,11 @@ exports.Store_productRouter = class {
         console.log(req.body);
         if (req.body.upc && req.body.id_product && req.body.selling_price && req.body.products_number) {
             (async () => {
-                if (req.body.upc) {
-                    await internalDAO.updateStore_product(req.body.upc, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
+                if (req.body.upc_prom) {
+                    await internalDAO.updateStore_product(req.body.upc, req.body.upc_prom, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
                 }
                 else{
-                    await internalDAO.updateStore_product1(req.body.upc, req.body.upc_prom,  req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
+                    await internalDAO.updateStore_product1(req.body.upc,  req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
                 }
                     res.status(200).send(req.body)
             })()
