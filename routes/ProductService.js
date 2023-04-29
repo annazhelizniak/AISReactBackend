@@ -46,7 +46,7 @@ exports.ProductsRouter = class {
                 res.send("Success")
             })()
         } else {
-            res.sendStatus(400)
+            res.sendStatus(req.params.id_product)
         }
     }
 
