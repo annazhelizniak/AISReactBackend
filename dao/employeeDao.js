@@ -23,7 +23,7 @@ exports.EmployeeDAO = class {
     gET_ALL_KASIRS() {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.EMPLOYEE_DB} WHERE empl_role="kasir" ORDER BY empl_surname`,
+                `SELECT * FROM ${db.EMPLOYEE_DB} WHERE empl_role="cashier" ORDER BY empl_surname`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -84,7 +84,7 @@ exports.EmployeeDAO = class {
     }
 
 
-    addUser(id_employee,empl_surname,
+    addUser(empl_surname,
             empl_name,empl_patronymic,
             empl_role,salary,
             date_of_birth,date_of_start
@@ -96,7 +96,7 @@ exports.EmployeeDAO = class {
 
         return new Promise(function (resolve) {
             db.connection.query(
-                `INSERT INTO ${db.EMPLOYEE_DB} (id_employee,empl_surname,empl_name,empl_patronymic,empl_role,salary,date_of_birth,date_of_start,phone_number,city,street,zip_code,email,password) VALUES ('${id_employee}','${empl_surname}','${empl_name}','${empl_patronymic}','${empl_role}','${salary}','${date_of_birth}','${date_of_start}','${phone_number}','${city}','${street}','${zip_code}','${email}','${password}')`,
+                `INSERT INTO ${db.EMPLOYEE_DB} (empl_surname,empl_name,empl_patronymic,empl_role,salary,date_of_birth,date_of_start,phone_number,city,street,zip_code,email,password) VALUES ('${id_employee}','${empl_surname}','${empl_name}','${empl_patronymic}','${empl_role}','${salary}','${date_of_birth}','${date_of_start}','${phone_number}','${city}','${street}','${zip_code}','${email}','${password}')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
