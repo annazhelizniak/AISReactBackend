@@ -51,10 +51,10 @@ exports.runProgram = function (port) {
 
     //products
     app.get('/products', productRouter.getProducts)
-    app.get('/products/:upc', productRouter.getProduct)
+    app.get('/products/:id_product', productRouter.getProduct)
     app.post('/products', productRouter.addProduct)
-    app.put('/products/:upc', productRouter.updateProduct)
-    app.delete('/products/:upc', productRouter.deleteProduct)
+    app.put('/products', productRouter.updateProduct)
+    app.delete('/products/:id_product', productRouter.deleteProduct)
 
 
     app.listen(port, () => {
