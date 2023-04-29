@@ -44,7 +44,7 @@ exports.runProgram = function (port) {
     app.get('/store_products', store_productRouter.getAllStore_product)
     app.get('/store_products/:upc', store_productRouter.getStoreProduct)
     app.post('/store_products', store_productRouter.addStore_product)
-    app.put('/store_products/:upc', store_productRouter.updateStore_product)
+    app.put('/store_products', store_productRouter.updateStore_product)
     app.delete('/store_products/:upc', store_productRouter.deleteStore_product)
     app.get('/getAllStore_productWithProductCharacteristics', store_productRouter.getAllStore_productWithProductCharacteristics)
 
