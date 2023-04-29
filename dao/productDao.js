@@ -176,7 +176,7 @@ exports.ProductsDao = class {
     }
     // private static String ALL_PRODUCTS_FROM_STORE_SORTED_BY_NAME = "SELECT * FROM `product` WHERE id_product IN "
     //     + "(SELECT id_product FROM `store_product`) ORDER BY product_name";
-    getProductsWithName(name) {
+    getProductsWithCharacterisctics(characteristics) {
         return new Promise(function (resolve) {
             db.connection.query(
                 `SELECT * FROM ${db.PRODUCT_DB} WHERE id_product IN `

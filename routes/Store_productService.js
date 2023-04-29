@@ -75,4 +75,41 @@ exports.Store_productRouter = class {
         })()
     }
 
+
+    aLL_PRODUCTS_FOR_SALE(req, res) {
+
+        (async () => {
+
+            res.json(await dao.aLL_PRODUCTS_FOR_SALE())
+        })()
+    }
+    aLL_PRODUCTS_NOT_FOR_SALE(req, res) {
+
+        (async () => {
+
+            res.json(await dao.aLL_PRODUCTS_NOT_FOR_SALE())
+        })()
+    }
+    aLL_PRODUCTS_FOR_SALE_SORT_BY_NUMBER(req, res) {
+
+        (async () => {
+
+            res.json(await dao.aLL_PRODUCTS_FOR_SALE_SORT_BY_NUMBER())
+        })()
+    }
+    aLL_PRODUCTS_NOT_FOR_SALE_BY_NUMBER(req, res) {
+
+        (async () => {
+
+            res.json(await dao.aLL_PRODUCTS_NOT_FOR_SALE_BY_NUMBER())
+        })()
+    }
+    aLL_PRODUCTS_FROM_STORE_SORTED_BY_NUMBER(req, res) {
+
+        (async () => {
+
+            res.json(await dao.aLL_PRODUCTS_FROM_STORE_SORTED_BY_NUMBER())
+        })()
+    }
+
 }

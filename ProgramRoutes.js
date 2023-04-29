@@ -53,6 +53,13 @@ exports.runProgram = function (port) {
     app.put('/store_products', store_productRouter.updateStore_product)
     app.delete('/store_products/:upc', store_productRouter.deleteStore_product)
     app.get('/getAllStore_productWithProductCharacteristics', store_productRouter.getAllStore_productWithProductCharacteristics)
+//
+    app.get('/aLL_PRODUCTS_FOR_SALE', store_productRouter.aLL_PRODUCTS_FOR_SALE)
+    app.get('/aLL_PRODUCTS_NOT_FOR_SALE', store_productRouter.aLL_PRODUCTS_NOT_FOR_SALE)
+    app.get('/aLL_PRODUCTS_FOR_SALE_SORT_BY_NUMBER', store_productRouter.aLL_PRODUCTS_FOR_SALE_SORT_BY_NUMBER)
+    app.get('/aLL_PRODUCTS_NOT_FOR_SALE_BY_NUMBER', store_productRouter.aLL_PRODUCTS_NOT_FOR_SALE_BY_NUMBER)
+    app.get('/aLL_PRODUCTS_FROM_STORE_SORTED_BY_NUMBER', store_productRouter.aLL_PRODUCTS_FROM_STORE_SORTED_BY_NUMBER)
+//
 
 
     //products
