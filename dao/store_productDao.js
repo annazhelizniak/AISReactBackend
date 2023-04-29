@@ -35,10 +35,26 @@ exports.Store_productDao = class {
                 })
         })
     }
-    addStore_product(upc_prom,id_product,selling_price,products_number,promotional_product) {
+    addStore_product(upc, upc_prom,id_product,selling_price,products_number,promotional_product) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `INSERT INTO ${db.STORE_PRODUCT_DB} (upc_prom,id_product,selling_price,products_number,promotional_product) VALUES ('${upc_prom},${id_product},${selling_price},${products_number},${promotional_product}')`,
+                `INSERT INTO ${db.STORE_PRODUCT_DB} (upc,upc_prom,id_product,selling_price,products_number,promotional_product) VALUES ('${upc}','${upc_prom}','${id_product}','${selling_price}','${products_number}','${promotional_product}')`,
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(err)
+                    }
+                    resolve(results)
+                }
+            )
+        })
+
+    }
+
+    addStore_product1(upc, id_product,selling_price,products_number,promotional_product) {
+        return new Promise(function (resolve) {
+            db.connection.query(
+                `INSERT INTO ${db.STORE_PRODUCT_DB} (upc,id_product,selling_price,products_number,promotional_product) VALUES ('${upc}','${id_product}','${selling_price}','${products_number}','${promotional_product}')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -57,11 +73,35 @@ exports.Store_productDao = class {
                 `
                     UPDATE ${db.STORE_PRODUCT_DB} 
                     SET
-                    upc_prom = '${upc_prom}'
-                    id_product = ${id_product}
-                    selling_price = ${selling_price}
-                    products_number = ${products_number}
-                    promotional_product = ${promotional_product}
+                    upc_prom = '${upc_prom}',
+                    id_product = '${id_product}',
+                    selling_price = '${selling_price}',
+                    products_number = '${products_number}',
+                    promotional_product = '${promotional_product}'
+                    WHERE upc = ${upc}
+                `,
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(err)
+                    }
+                    resolve(results)
+                }
+            )
+        })
+    }
+
+    updateStore_product1(upc,id_product,selling_price,products_number,promotional_product) {
+        return new Promise(function (resolve) {
+            db.connection.query(
+                `
+                    UPDATE ${db.STORE_PRODUCT_DB} 
+                    SET
+                    upc_prom = NULL,
+                    id_product = '${id_product}',
+                    selling_price = '${selling_price}',
+                    products_number = '${products_number}',
+                    promotional_product = '${promotional_product}'
                     WHERE upc = ${upc}
                 `,
                 (err, results) => {

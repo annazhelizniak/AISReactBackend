@@ -114,20 +114,20 @@ exports.EmployeeDAO = class {
                 `
                     UPDATE ${db.EMPLOYEE_DB} 
                     SET
-                        empl_surname = '${empl_surname}'
-                        empl_name = '${empl_name}'
-                        empl_patronymic = '${empl_patronymic}'
-                        empl_role = '${empl_role}'
-                        salary = '${salary}'
-                        date_of_birth = '${date_of_birth}'
-                        date_of_start = '${date_of_start}'
-                        phone_number = '${phone_number}'
-                        city = '${city}'
-                        street = '${street}'
-                        zip_code = '${zip_code}'
-                        email = '${email}'
+                        empl_surname = '${empl_surname}',
+                        empl_name = '${empl_name}',
+                        empl_patronymic = '${empl_patronymic}',
+                        empl_role = '${empl_role}',
+                        salary = '${salary}',
+                        date_of_birth = '${date_of_birth}',
+                        date_of_start = '${date_of_start}',
+                        phone_number = '${phone_number}',
+                        city = '${city}',
+                        street = '${street}',
+                        zip_code = '${zip_code}',
+                        email = '${email}',
                         password = '${password}'
-                    WHERE id = ${id_employee}
+                    WHERE id_employee = ${id_employee}
                 `,
                 (err, results) => {
                     if (err) {

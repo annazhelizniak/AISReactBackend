@@ -25,13 +25,17 @@ exports.Store_productRouter = class {
     }
 
     addStore_product(req, res) {
-        if (req.body.upc_prom && req.body.id_product && req.body.selling_price && req.body.products_number && req.body.promotional_product) {
+        if (req.body.upc && req.body.id_product && req.body.selling_price && req.body.products_number) {
             (async () => {
-                await dao.addStore_product(req.body.upc_prom, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
-                res.send(req.body)
+                if(req.body.upc_prom) {
+                    await dao.addStore_product(req.body.upc, req.body.upc_prom, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
+                }else{
+                    await dao.addStore_product1(req.body.upc, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
+                }
+                res.send("Success")
             })()
         } else {
-            console.log("err" )
+            console.log(req.body )
         }
     }
 
@@ -49,10 +53,15 @@ exports.Store_productRouter = class {
 
     updateStore_product(req, res) {
         let internalDAO = dao
-        if (req.body.upc && req.body.upc_prom && req.body.id_product && req.body.selling_price && req.body.products_number && req.body.promotional_product) {
+        if (req.body.upc && req.body.upc_prom && req.body.id_product && req.body.selling_price && req.body.products_number) {
             (async () => {
-                await internalDAO.updateStore_product(req.body.upc, req.body.upc_prom, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
-                res.status(200).send("Success")
+                if (req.body.upc) {
+                    await internalDAO.updateStore_product(req.body.upc, req.body.upc_prom, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
+                }
+                else{
+                    await internalDAO.updateStore_product1(req.body.upc, req.body.id_product, req.body.selling_price, req.body.products_number, req.body.promotional_product)
+                }
+                    res.status(200).send(req.body)
             })()
         } else {
             res.sendStatus(400);   }

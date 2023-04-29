@@ -6,6 +6,9 @@ const {UsersRouter} = require("./routes/EmployeeService");
 const {CategoriesRouter} = require("./routes/CategoryService");
 const {Store_productRouter} = require("./routes/Store_productService");
 const {ProductsRouter} = require("./routes/ProductService");
+const {CheckRouter} = require("./routes/CheckService");
+const {CustomerCardRouter} = require("./routes/CustomerCardService");
+const {SaleRouter} = require("./routes/SaleService");
 exports.runProgram = function (port) {
 
     const app = express();
@@ -13,6 +16,9 @@ exports.runProgram = function (port) {
     const categoriesRouter = new CategoriesRouter()
     const store_productRouter = new Store_productRouter()
     const productRouter = new ProductsRouter();
+    const checkRouter = new CheckRouter();
+    const cardRouter = new CustomerCardRouter();
+    const saleRouter = new SaleRouter();
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
     app.use(cors())
@@ -56,6 +62,27 @@ exports.runProgram = function (port) {
     app.put('/products', productRouter.updateProduct)
     app.delete('/products/:id_product', productRouter.deleteProduct)
 
+
+    //checks
+    app.get('/checks', checkRouter.getAllChecks)
+    app.get('/checks/:check_number', checkRouter.getCheck)
+    app.post('/checks', checkRouter.addCheck)
+    app.put('/checks', checkRouter.updateCheck)
+    app.delete('/checks/:check_number', checkRouter.deleteCheck)
+
+    //customer card
+    app.get('/cards', cardRouter.getAllCards)
+    app.get('/cards/:card_number', cardRouter.getCard)
+    app.post('/cards', cardRouter.addCard)
+    app.put('/cards', cardRouter.updateCard)
+    app.delete('/cards/:card_number', cardRouter.deleteCard)
+
+    //sales
+    app.get('/sales', saleRouter.getAllSales)
+    app.post('/salesid', saleRouter.getSale)
+    app.post('/sales', saleRouter.addSale)
+    app.put('/sales', saleRouter.updateSale)
+    app.delete('/sales/:upc/:check_number', saleRouter.deleteSale)
 
     app.listen(port, () => {
         console.log("Server is listening on port " + port)

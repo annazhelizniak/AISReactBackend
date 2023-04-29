@@ -21,18 +21,19 @@ exports.CategoriesDao = class {
 
 
     getAllCategories() {
-        return new Promise(function (resolve) {
+        return new Promise((resolve, reject) => {
             db.connection.query(
-                `SELECT * FROM ${db.CATEGORY_DB} ORDER BY category_name`,
+                `SELECT * FROM \`${db.CHECK_DB}\``,
                 (err, results) => {
                     if (err) {
-                        console.log(err)
-                        resolve(false)
+                        console.log(err);
+                        reject(err);
+                    } else {
+                        resolve(results);
                     }
-                    resolve(results)
                 }
-            )
-        })
+            );
+        });
     }
 
     getCategory(category_number) {
