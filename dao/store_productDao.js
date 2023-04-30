@@ -136,7 +136,7 @@ exports.Store_productDao = class {
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT product_name FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product ORDER BY 'products_number'`,
+                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product ORDER BY 'products_number'`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
