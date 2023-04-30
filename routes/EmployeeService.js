@@ -88,13 +88,13 @@ exports.UsersRouter = class {
     }
 
     credentialsAreValid(req, res) {
-        if (req.body.login && req.body.passwd) {
+        if (req.body.email && req.body.password) {
             (async () => {
-                res.send(await dao.credentialsAreValid(req.body.login, req.body.passwd))
+                res.send(await dao.credentialsAreValid(req.body.email, req.body.password))
             })()
         } else if (req.query.login && req.query.password) {
             (async () => {
-                res.send(await dao.credentialsAreValid(req.query.login, req.query.passwd))
+                res.send(await dao.credentialsAreValid(req.query.email, req.query.password))
 
             })()
         } else {
