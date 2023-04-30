@@ -23,7 +23,7 @@ exports.CategoriesDao = class {
     getAllCategories() {
         return new Promise((resolve, reject) => {
             db.connection.query(
-                `SELECT * FROM \`${db.CHECK_DB}\``,
+                `SELECT * FROM ${db.CATEGORY_DB} ORDER BY category_name`,
                 (err, results) => {
                     if (err) {
                         console.log(err);
