@@ -9,6 +9,7 @@ const {ProductsRouter} = require("./routes/ProductService");
 const {CheckRouter} = require("./routes/CheckService");
 const {CustomerCardRouter} = require("./routes/CustomerCardService");
 const {SaleRouter} = require("./routes/SaleService");
+const {AdditionalFunctionsRouter} = require("./routes/AdditionalFunctionsService");
 exports.runProgram = function (port) {
 
     const app = express();
@@ -19,6 +20,7 @@ exports.runProgram = function (port) {
     const checkRouter = new CheckRouter();
     const cardRouter = new CustomerCardRouter();
     const saleRouter = new SaleRouter();
+    const additionalFunctionsRouter = new AdditionalFunctionsRouter();
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
     app.use(cors())
@@ -123,6 +125,16 @@ exports.runProgram = function (port) {
     app.post('/sales', saleRouter.addSale)
     app.put('/sales', saleRouter.updateSale)
     app.delete('/sales', saleRouter.deleteSale)
+//additional
+    //todo test
+    app.get('/additionalGroupBy1/:category_number', additionalFunctionsRouter.getProductsInCategoryinDifferentPrice)
+    app.get('/additionalGroupBy2/:category_number', additionalFunctionsRouter.getProductsInCategoryinDifferentNumber)
+    app.get('/additionalGroupBy3/:producer', additionalFunctionsRouter.getCategoryinDifferentProductsserteinProducer)
+    app.get('/additionalNotNot1', additionalFunctionsRouter.getupcForAllChecks)
+    app.get('/additionalNotNot2', additionalFunctionsRouter.getCustomersFromAllKasirs)
+    app.get('/additionalNotNot3', additionalFunctionsRouter.getkasirsForAllClients)
+
+
 
     app.listen(port, () => {
         console.log("Server is listening on port " + port)
