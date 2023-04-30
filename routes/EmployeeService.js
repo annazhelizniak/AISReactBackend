@@ -31,6 +31,7 @@ exports.UsersRouter = class {
         }
     }
     addUser(req, res) {
+        console.log(req.body)
         bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
             if (err) {
                 res.sendStatus(400);
