@@ -14,6 +14,14 @@ exports.ProductsRouter = class {
         })()
     }
 
+    getMaxProduct(req, res) {
+
+        (async () => {
+
+            res.json(await dao.getMaxProduct())
+        })()
+    }
+
 
     getProduct(req, res) {
         let internalDAO = dao

@@ -67,6 +67,12 @@ exports.CheckRouter = class {
             res.sendStatus(400);   }
     }
 
+    getMaxCheck(req,res){
+        (async () => {
+            res.json(await dao.getMaxCheck())
+        })()
+    }
+
     getProductsFromXCheck(req, res) {
         let internalDAO = dao
         if (req.params.check_number) {
@@ -76,6 +82,61 @@ exports.CheckRouter = class {
             })()
         } else {
             res.sendStatus(400)
+        }
+    }
+
+    getAllChecksByCashierForPeriod(req, res) {
+        if (req.body.id_employee && req.body.print_date_start && req.body.print_date_end) {
+            (async () => {
+                res.json(await dao.getAllChecksByCashierForPeriod(req.body.id_employee,req.body.print_date_start,req.body.print_date_end))
+                console.log(req.body )
+            })()
+        } else {
+            console.log(req.body )
+        }
+    }
+
+    getAllChecksByAllCashiersForPeriod(req, res) {
+        if (req.body.print_date_start && req.body.print_date_end) {
+            (async () => {
+                res.json(await dao.getAllChecksByAllCashiersForPeriod(req.body.print_date_start,req.body.print_date_end))
+                console.log(req.body )
+            })()
+        } else {
+            console.log(req.body )
+        }
+    }
+
+    getSumChecksByCashierForPeriod(req, res) {
+        if (req.body.id_employee && req.body.print_date_start && req.body.print_date_end) {
+            (async () => {
+                res.json(await dao.getSumChecksByCashierForPeriod(req.body.id_employee,req.body.print_date_start,req.body.print_date_end))
+                console.log(req.body )
+            })()
+        } else {
+            console.log(req.body )
+        }
+    }
+
+    getSumChecksByAllCashiersForPeriod(req, res) {
+        if (req.body.print_date_start && req.body.print_date_end) {
+            (async () => {
+                res.json(await dao.getSumChecksByAllCashiersForPeriod(req.body.print_date_start,req.body.print_date_end))
+                console.log(req.body )
+            })()
+        } else {
+            console.log(req.body )
+        }
+    }
+
+    getAmountOfProductSailedForPeriod(req, res) {
+        if (req.body.id_product && req.body.date_start && req.body.date_end) {
+            (async () => {
+                res.json(await dao.getAmountOfProductSailedForPeriod(req.body.id_product,req.body.date_start,req.body.date_end))
+                console.log(req.body )
+            })()
+        } else {
+            console.log(req.body )
         }
     }
 

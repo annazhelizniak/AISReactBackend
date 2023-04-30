@@ -88,6 +88,21 @@ exports.ProductsDao = class {
         })
     }
 
+    getMaxProduct(){
+        return new Promise(function (resolve) {
+            db.connection.query(
+                `SELECT MAX(id_product) AS last_id FROM ${db.PRODUCT_DB}`,
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(false)
+                    }
+                    resolve(results)
+                }
+            )
+        })
+    }
+
 
 
     //

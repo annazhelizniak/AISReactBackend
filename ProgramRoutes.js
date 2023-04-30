@@ -68,6 +68,7 @@ exports.runProgram = function (port) {
     app.post('/products', productRouter.addProduct)
     app.put('/products', productRouter.updateProduct)
     app.delete('/products/:id_product', productRouter.deleteProduct)
+    app.get('/getMaxProduct', productRouter.getMaxProduct)
 
 //todo test
 
@@ -85,7 +86,13 @@ exports.runProgram = function (port) {
     app.post('/checks', checkRouter.addCheck)
     app.put('/checks', checkRouter.updateCheck)
     app.delete('/checks/:check_number', checkRouter.deleteCheck)
+    app.get('/getMaxCheck', checkRouter.getMaxCheck)
     app.get('/getProductsFromXCheck/:check_number', checkRouter.getProductsFromXCheck)
+    app.post('/getAllChecksByCashierForPeriod', checkRouter.getAllChecksByCashierForPeriod)
+    app.post('/getAllChecksByAllCashiersForPeriod', checkRouter.getAllChecksByAllCashiersForPeriod)
+    app.post('/getSumChecksByCashierForPeriod', checkRouter.getSumChecksByCashierForPeriod)
+    app.post('/getSumChecksByAllCashiersForPeriod', checkRouter.getSumChecksByAllCashiersForPeriod)
+    app.post('/getAmountOfProductSailedForPeriod', checkRouter.getAmountOfProductSailedForPeriod)
 
     //customer card
     app.get('/cards', cardRouter.getAllCards)
