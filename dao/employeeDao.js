@@ -39,7 +39,7 @@ exports.EmployeeDAO = class {
     fIND_PHONE_ADD_BY_SURNAME(empl_surname){
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT phone_number, city, street, zipcode FROM ${db.EMPLOYEE_DB} WHERE empl_surname=${empl_surname}`,
+                `SELECT phone_number, city, street, zip_code FROM ${db.EMPLOYEE_DB} WHERE empl_surname=${empl_surname}`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
