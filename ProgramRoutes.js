@@ -111,7 +111,7 @@ exports.runProgram = function (port) {
     app.get('/cardsPhone/:cust_phone_number', cardRouter.getCardPhone)
     app.get('/cardsCity/:city', cardRouter.getCardCity)
     app.get('/cardsPatronymic/:cust_patronymic', cardRouter.getCardPatronymic)
-    app.get('/cardsPersent/:persent', cardRouter.getCardPersent)
+    app.get('/cardsPercent/:percent', cardRouter.getCardPercent)
     //todo test
     app.get('/sEARCH_USERS_WHO_BOUGHT_PRODUCT/:id_product', cardRouter.sEARCH_USERS_WHO_BOUGHT_PRODUCT)
 

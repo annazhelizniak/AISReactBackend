@@ -164,7 +164,7 @@ exports.ProductsDao = class {
     getProductsFromCategory(category) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} WHERE category='${category}' ORDER BY product_name`,
+                `SELECT * FROM ${db.PRODUCT_DB} WHERE category_number ='${category}' ORDER BY product_name`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -175,10 +175,11 @@ exports.ProductsDao = class {
             )
         })
     }
+    //LOWER(category_name) LIKE CONCAT('%', LOWER(${name}), '%')`
     getProductsByName(name) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} WHERE product_name='${name}'`,
+                `SELECT * FROM ${db.PRODUCT_DB} WHERE LOWER(product_name) LIKE CONCAT('%', LOWER(${name}), '%')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)

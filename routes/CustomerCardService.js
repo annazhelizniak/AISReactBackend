@@ -139,11 +139,11 @@ exports.CustomerCardRouter = class {
         }
     }
 
-    getCardPersent(req, res) {
+    getCardPercent(req, res) {
         let internalDAO = dao
         if (req.params.percent) {
             (async () => {
-                res.json(await internalDAO.getCardPersent(req.params.percent))
+                res.json(await internalDAO.getCardPercent(req.params.percent))
 
             })()
         } else {

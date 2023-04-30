@@ -185,7 +185,7 @@ console.log("aaa")
                 })
         })
     }
-    getCardPersent(persent) {
+    getCardPercent(persent) {
 
         return new Promise(function (resolve) {
             db.connection.query(`SELECT * FROM ${db.CUSTOMER_CARD_DB} WHERE  percent='${persent}' ORDER BY cust_surname`,
