@@ -106,12 +106,12 @@ exports.CustomerCardDao = class {
                 })
         })
     }
-
+//LOWER(category_name) LIKE CONCAT('%', LOWER(${name}), '%')`
     getCardSurname(surname) {
 
         return new Promise(function (resolve) {
 
-            db.connection.query(`SELECT * FROM ${db.CUSTOMER_CARD_DB} WHERE cust_surname = '${surname}'`,
+            db.connection.query(`SELECT * FROM ${db.CUSTOMER_CARD_DB} WHERE LOWER(cust_surname) LIKE CONCAT('%', LOWER(${surname}), '%')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
