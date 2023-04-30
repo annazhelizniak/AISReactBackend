@@ -146,8 +146,8 @@ exports.CheckDao = class {
     getProductsFromXCheck(check_number) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM (${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product) WHERE upc IN 
-                (SELECT upc FROM ${db.SALE_DB} WHERE check_number = '${check_number}' ORDER BY print_date)`,
+                `SELECT * FROM (((${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product) ) INNER JOIN ${db.SALE_DB} ON store_product.upc = sale.upc) INNER JOIN ${db.CHECK_DB} ON sale.check_number = check_.check_number
+                WHERE sale.check_number = '${check_number}' ORDER BY print_date`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
