@@ -148,7 +148,7 @@ exports.CheckRouter = class {
                 console.log(req.body )
             })()
         } else {
-            console.log(req.body )
+            console.log("req.body ")
         }
     }
 
