@@ -35,7 +35,7 @@ exports.CategoriesDao = class {
             );
         });
     }
-
+//todo check '${}'
     getCategory(category_number) {
 
         return new Promise(function (resolve) {
