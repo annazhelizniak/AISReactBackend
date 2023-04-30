@@ -111,7 +111,7 @@ exports.CustomerCardRouter = class {
                 res.send(req.body)
             })()
         } else {
-            console.log("err" )
+            console.log(req.body )
         }
     }
 
