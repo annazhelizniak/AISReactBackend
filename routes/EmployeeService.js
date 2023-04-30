@@ -1,5 +1,8 @@
 
 const {EmployeeDao, dao} = require("../dao/employeeDao");
+const bcrypt = require('bcrypt');
+const saltRounds = 5;
+
 
 exports.UsersRouter = class {
 
@@ -28,16 +31,22 @@ exports.UsersRouter = class {
         }
     }
     addUser(req, res) {
+        bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+            if (err) {
+                res.sendStatus(400);
+            }
             (async () => {
                 await dao.addUser(req.body.empl_surname,
-                            req.body.empl_name,req.body.empl_patronymic,
-                            req.body.empl_role,req.body.salary,
-                            req.body.date_of_birth,req.body.date_of_start,
-                            req.body.phone_number,req.body.city,
-                            req.body.street, req.body.zip_code,
-                            req.body.email,req.body.password)
+                    req.body.empl_name,req.body.empl_patronymic,
+                    req.body.empl_role,req.body.salary,
+                    req.body.date_of_birth,req.body.date_of_start,
+                    req.body.phone_number,req.body.city,
+                    req.body.street, req.body.zip_code,
+                    req.body.email,hash)
                 res.send("Success")
             })()
+        });
+
         // (async () => {
         //     await dao.addUser(req.params.id_employee,req.params.empl_surname,
         //         req.params.empl_name,req.params.empl_patronymic,
@@ -87,18 +96,32 @@ exports.UsersRouter = class {
             res.sendStatus(400);   }
     }
 
+
     credentialsAreValid(req, res) {
         if (req.body.email && req.body.password) {
-            (async () => {
-                res.send(await dao.credentialsAreValid(req.body.email, req.body.password))
-            })()
-        } else if (req.query.email && req.query.password) {
-            (async () => {
-                res.send(await dao.credentialsAreValid(req.query.email, req.query.password))
+            dao.getPassword(req.body.email).then((result) => {
 
-            })()
+                bcrypt.compare(req.body.password, result[0].password, (err, result1) => {
+                    if (err) {
+                        console.log(err);
+                        res.sendStatus(500);
+                    } else if (result1) {
+                        dao.credentialsAreValid(req.body.email, result[0].password).then((result2) => {
+                            res.send(result2);
+                        }).catch((error) => {
+                            console.log(error);
+                            res.sendStatus(500);
+                        });
+                    } else {
+                        res.send(false);
+                    }
+                });
+            }).catch((error) => {
+                console.log(error);
+                res.sendStatus(500);
+            });
         } else {
-            res.sendStatus(400)
+            res.sendStatus(400);
         }
     }
 

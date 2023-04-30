@@ -1,5 +1,6 @@
 const db = require("./dbProperties")
-
+const bcrypt = require('bcrypt');
+const saltRounds = 5;
 exports.EmployeeDAO = class {
     constructor() {
     }
@@ -83,6 +84,23 @@ exports.EmployeeDAO = class {
         })
     }
 
+    getPassword(login) {
+        // this.#guardCredentials(login, passwd)
+
+        return new Promise(function (resolve) {
+            db.connection.query(
+                `SELECT password FROM ${db.EMPLOYEE_DB} WHERE email = '${login}'`,
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(false)
+                    }
+                    resolve(results)
+                }
+            )
+        })
+    }
+
 
     addUser(empl_surname,
             empl_name,empl_patronymic,
@@ -95,6 +113,7 @@ exports.EmployeeDAO = class {
      //   this.#guardCredentials(login, passwd)
 
         return new Promise(function (resolve) {
+
             db.connection.query(
                 `INSERT INTO ${db.EMPLOYEE_DB} (empl_surname,empl_name,empl_patronymic,empl_role,salary,date_of_birth,date_of_start,phone_number,city,street,zip_code,email,password) VALUES ('${empl_surname}','${empl_name}','${empl_patronymic}','${empl_role}','${salary}','${date_of_birth}','${date_of_start}','${phone_number}','${city}','${street}','${zip_code}','${email}','${password}')`,
                 (err, results) => {
