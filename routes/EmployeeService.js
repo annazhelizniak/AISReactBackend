@@ -22,9 +22,9 @@ exports.UsersRouter = class {
     }
 
     fIND_PHONE_ADD_BY_SURNAME(req, res) {
-        if (req.body.empl_surname) {
+        if (req.params.empl_surname) {
             (async () => {
-                res.json(await dao.fIND_PHONE_ADD_BY_SURNAME(empl_surname))
+                res.json(await dao.fIND_PHONE_ADD_BY_SURNAME(req.params.empl_surname))
             })()
         } else {
             res.sendStatus(400)

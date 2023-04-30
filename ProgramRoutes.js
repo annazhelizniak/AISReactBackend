@@ -34,7 +34,7 @@ exports.runProgram = function (port) {
     app.post('/checkuser', usersRouter.credentialsAreValid)
     app.get('/allkasirs', usersRouter.gET_ALL_KASIRS)
 
-    app.get('/findphoneaddbysurname', usersRouter.fIND_PHONE_ADD_BY_SURNAME)
+    app.get('/findphoneaddbysurname/:empl_surname', usersRouter.fIND_PHONE_ADD_BY_SURNAME)
 
 
 
@@ -44,7 +44,7 @@ exports.runProgram = function (port) {
     app.post('/categories', categoriesRouter.addCategory)
     app.put('/categories', categoriesRouter.updateCategory)
     app.delete('/categories/:category_number', categoriesRouter.deleteCategory)
-    app.get('/categories/searchbyname/:category_name', categoriesRouter.searchByName)
+    app.get('/categoriessearchbyname/:category_name', categoriesRouter.searchByName)
 
 
 
