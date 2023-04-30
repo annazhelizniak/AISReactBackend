@@ -85,6 +85,18 @@ exports.CheckRouter = class {
         }
     }
 
+    getProductsFromXCheck1(req, res) {
+        let internalDAO = dao
+        if (req.params.check_number) {
+            (async () => {
+                res.json(await internalDAO.getProductsFromXCheck(req.params.check_number))
+
+            })()
+        } else {
+            res.sendStatus(400)
+        }
+    }
+
     getAllChecksByCashierForPeriod(req, res) {
         if (req.body.id_employee && req.body.print_date_start && req.body.print_date_end) {
             (async () => {

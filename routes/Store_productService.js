@@ -10,6 +10,11 @@ exports.Store_productRouter = class {
             res.json(await dao.getAllStore_product())
         })()
     }
+    getAllStore_productByNumber(req, res) {
+        (async () => {
+            res.json(await dao.getAllStore_productByNumber())
+        })()
+    }
 
     getStoreProduct(req, res) {
         let internalDAO = dao

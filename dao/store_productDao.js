@@ -10,7 +10,22 @@ exports.Store_productDao = class {
     getAllStore_product() {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.STORE_PRODUCT_DB} ORDER BY 'category_name'`,
+                `SELECT * FROM ${db.STORE_PRODUCT_DB} ORDER BY 'product_name'`,
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(false)
+                    }
+                    resolve(results)
+                }
+            )
+        })
+    }
+
+    getAllStore_productByNumber() {
+        return new Promise(function (resolve) {
+            db.connection.query(
+                `SELECT * FROM ${db.STORE_PRODUCT_DB} ORDER BY 'products_number'`,
                 (err, results) => {
                     if (err) {
                         console.log(err)

@@ -48,6 +48,7 @@ exports.runProgram = function (port) {
 
     //store_products
     app.get('/store_products', store_productRouter.getAllStore_product)
+    app.get('/getAllStore_productByNumber', store_productRouter.getAllStore_productByNumber)
     app.get('/store_products/:upc', store_productRouter.getStoreProduct)
     app.post('/store_products', store_productRouter.addStore_product)
     app.put('/store_products', store_productRouter.updateStore_product)
