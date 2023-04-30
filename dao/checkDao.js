@@ -139,7 +139,8 @@ exports.CheckDao = class {
 
 
             db.connection.query(
-                'SELECT * FROM ${db.PRODUCT_DB} WHERE id_product IN (SELECT id_product FROM ${db.STORE_PRODUCT_DB} WHERE upc IN (SELECT upc FROM ${db.STORE_PRODUCT_DB} WHERE check_number IN (SELECT check_number FROM ${db.SALE_DB} WHERE check_number = ${check_number})))',
+                `SELECT * FROM (${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product) WHERE upc IN 
+                (SELECT upc FROM ${db.SALE_DB} WHERE check_number = '${check_number}')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
