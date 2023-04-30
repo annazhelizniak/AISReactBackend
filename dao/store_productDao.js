@@ -10,7 +10,7 @@ exports.Store_productDao = class {
     getAllStore_product() {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.STORE_PRODUCT_DB} ORDER BY 'product_name'`,
+                `SELECT * FROM ${db.STORE_PRODUCT_DB} ORDER BY product_name`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -137,7 +137,7 @@ exports.Store_productDao = class {
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product ORDER BY 'product_name'`,
+                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product ORDER BY product_name`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -153,7 +153,7 @@ exports.Store_productDao = class {
     getAllStore_productByNumber() {
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product ORDER BY 'products_number'`,
+                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product ORDER BY products_number`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -171,7 +171,7 @@ exports.Store_productDao = class {
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product WHERE upc = '${upc}' ORDER BY 'products_number' `,
+                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product WHERE upc = '${upc}' ORDER BY products_number`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
@@ -206,7 +206,7 @@ console.log("a")
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product WHERE promotional_product ='0' ORDER BY 'product_name'`,
+                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product WHERE promotional_product ='0' ORDER BY product_name`,
 
                 (err, results) => {
                     if (err) {
