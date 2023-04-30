@@ -223,8 +223,8 @@ exports.CheckDao = class {
     getAmountOfProductSailedForPeriod(id_product,date_start,date_end){
         return new Promise(function (resolve) {
             db.connection.query(
-                `SELECT COUNT(id_product) AS amount FROM ${db.PRODUCT_DB} JOIN ${db.STORE_PRODUCT_DB} USING(id_product) JOIN ${db.SALE_DB} USING(upc) JOIN ${db.CHECK_DB} USING(check_number)
-                 WHERE id_product = ${id_product} AND WHERE DATE(print_date) BETWEEN '${date_start}' AND '${date_end}'`,
+                `SELECT SUM(product_number) AS amount FROM ${db.PRODUCT_DB} JOIN ${db.STORE_PRODUCT_DB} USING(id_product) JOIN ${db.SALE_DB} USING(upc) JOIN ${db.CHECK_DB} USING(check_number)
+                 WHERE id_product = '${id_product}' AND DATE(print_date) BETWEEN '${date_start}' AND '${date_end}'`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
