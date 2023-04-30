@@ -77,7 +77,7 @@ exports.EmployeeDAO = class {
                         console.log(err)
                         resolve(false)
                     }
-                    resolve(results.length > 0)
+                    resolve(results)
                 }
             )
         })
