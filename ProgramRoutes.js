@@ -76,12 +76,16 @@ exports.runProgram = function (port) {
     app.get('/productsProducer/:producer', productRouter.getProductsByProducer)
 
     app.get('/productsCategory/:category_number', productRouter.getProductsFromCategory)
+
+
+
     //checks
     app.get('/checks', checkRouter.getAllChecks)
     app.get('/checks/:check_number', checkRouter.getCheck)
     app.post('/checks', checkRouter.addCheck)
     app.put('/checks', checkRouter.updateCheck)
     app.delete('/checks/:check_number', checkRouter.deleteCheck)
+    app.get('/getProductsFromXCheck/:check_number', checkRouter.getProductsFromXCheck)
 
     //customer card
     app.get('/cards', cardRouter.getAllCards)

@@ -128,7 +128,26 @@ exports.CheckDao = class {
         })
     }
 
+    // private static String ALL_PRODUCTS_IN_CHECK = "SELECT * FROM `product` WHERE id_product IN "
+    //     + "(SELECT id_product FROM `store_product` WHERE upc IN "
+    //     + "(SELECT upc FROM `upc` WHERE check_number IN "
+    //     + "(SELECT check_number FROM `sale`)))";
 
+    getProductsFromXCheck(check_number) {
+
+        return new Promise(function (resolve) {
+
+
+            db.connection.query(
+                'SELECT * FROM ${db.PRODUCT_DB} WHERE id_product IN (SELECT id_product FROM ${db.STORE_PRODUCT_DB} WHERE upc IN (SELECT upc FROM ${db.STORE_PRODUCT_DB} WHERE check_number IN (SELECT check_number FROM ${db.SALE_DB} WHERE check_number = ${check_number})))',
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    resolve(results)
+                })
+        })
+    }
 
 }
 exports.dao = new exports.CheckDao()

@@ -67,4 +67,16 @@ exports.CheckRouter = class {
             res.sendStatus(400);   }
     }
 
+    getProductsFromXCheck(req, res) {
+        let internalDAO = dao
+        if (req.params.check_number) {
+            (async () => {
+                res.json(await internalDAO.getProductsFromXCheck(req.params.check_number))
+
+            })()
+        } else {
+            res.sendStatus(400)
+        }
+    }
+
 }
