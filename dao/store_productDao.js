@@ -148,6 +148,24 @@ exports.Store_productDao = class {
             )
         })
     }
+
+    getStore_productWithProductCharacteristics(upc) {
+
+        return new Promise(function (resolve) {
+
+            db.connection.query(
+                `SELECT * FROM ${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product WHERE upc = '${upc}' ORDER BY 'products_number' `,
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(false)
+                    }
+                    console.log(results)
+                    resolve(results)
+                }
+            )
+        })
+    }
     aLL_PRODUCTS_FOR_SALE() {
 
         return new Promise(function (resolve) {
