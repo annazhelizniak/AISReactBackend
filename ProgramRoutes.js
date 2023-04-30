@@ -129,9 +129,9 @@ exports.runProgram = function (port) {
     app.get('/additionalGroupBy1/:category_number', additionalFunctionsRouter.getProductsInCategoryinDifferentPrice)
     app.get('/additionalGroupBy2/:category_number', additionalFunctionsRouter.getProductsInCategoryinDifferentNumber)
     app.get('/additionalGroupBy3/:producer', additionalFunctionsRouter.getCategoryinDifferentProductsserteinProducer)
-    app.get('/additionalNotNot1', additionalFunctionsRouter.getupcForAllWorkers)
-    app.get('/additionalNotNot2', additionalFunctionsRouter.getupcForAllCustomers)
-    app.get('/additionalNotNot3', additionalFunctionsRouter.getupcForAllCategories)
+    app.get('/additionalNotNot1', additionalFunctionsRouter.getupcForAllChecks)
+    app.get('/additionalNotNot2', additionalFunctionsRouter.getCustomersFromAllKasirs)
+    app.get('/additionalNotNot3', additionalFunctionsRouter.getkasirsForAllClients)
 
 
 

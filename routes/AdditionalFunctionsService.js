@@ -6,9 +6,9 @@ exports.AdditionalFunctionsRouter = class {
     constructor() {
     }
 
-    getupcForAllWorkers(req, res) {
+    getupcForAllChecks(req, res) {
         (async () => {
-            res.json(await dao.getupcForAllWorkers())
+            res.json(await dao.getupcForAllChecks())
         })()
     }
 
@@ -25,9 +25,9 @@ exports.AdditionalFunctionsRouter = class {
         }
     }
 
-    getupcForAllCustomers(req, res) {
+    getCustomersFromAllKasirs(req, res) {
         (async () => {
-            res.json(await dao.getupcForAllCustomers())
+            res.json(await dao.getCustomersFromAllKasirs())
         })()
     }
 
@@ -44,9 +44,9 @@ exports.AdditionalFunctionsRouter = class {
         }
     }
 
-    getupcForAllCategories(req, res) {
+    getkasirsForAllClients(req, res) {
         (async () => {
-            res.json(await dao.getupcForAllCategories())
+            res.json(await dao.getkasirsForAllClients())
         })()
     }
 
