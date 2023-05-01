@@ -118,7 +118,7 @@ exports.CheckDao = class {
     deleteCheck(id) {
         return new Promise(function (resolve) {
             db.connection.query(
-                `DELETE FROM ${db.CHECK_DB} WHERE check_number= ${id}`,
+                `DELETE FROM ${db.CHECK_DB} WHERE check_number= '${id}'`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
