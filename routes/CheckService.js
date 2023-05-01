@@ -77,6 +77,7 @@ exports.CheckRouter = class {
         let internalDAO = dao
         if (req.params.check_number) {
             (async () => {
+                console.log(req.params)
                 res.json(await internalDAO.getProductsFromXCheck(req.params.check_number))
 
             })()
