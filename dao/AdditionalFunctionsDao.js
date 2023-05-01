@@ -51,7 +51,7 @@ exports.AdditionalFunctionsDao = class {
             db.connection.query(
                 `SELECT  * FROM  ${db.CUSTOMER_CARD_DB} p WHERE
             NOT EXISTS
-            (SELECT * FROM ${db.EMPLOYEE_DB}  WHERE  id_employee NOT IN
+            (SELECT * FROM ${db.EMPLOYEE_DB}  WHERE empl_role="cashier" AND id_employee NOT IN
             ( SELECT  id_employee FROM  ${db.CHECK_DB} WHERE  card_number = P.card_number))`,
                 (err, results) => {
                     if (err) {
