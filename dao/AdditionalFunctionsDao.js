@@ -109,8 +109,6 @@ GROUP BY category.category_name`,
         })
     }
 
-// 3.1! Знайти коди продуктів , певних категорій, які є в різних кількостях
-
     getProductsInCategoryinDifferentNumber(n) {
 
         return new Promise(function (resolve) {
