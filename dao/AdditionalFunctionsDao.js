@@ -3,6 +3,7 @@ const db = require("./dbProperties")
 exports.AdditionalFunctionsDao = class {
     constructor() {
     }
+
     //Знайти прізвища лекторів, які читають усі предмети (5 різних запитів).
     //SELECT кл(upc), Прізвище(id_product)
     // FROM лектор(store_product)
@@ -25,7 +26,7 @@ exports.AdditionalFunctionsDao = class {
     //(SELECT check_number FROM ${db.CHECK_DB} WHERE check_number NOT IN
 // ( SELECT check_number FROM ${db.SALE_DB}  WHERE check_number = P.check_number)))`,
 
-getupcForAllChecks() {
+    getupcForAllChecks() {
         return new Promise((resolve, reject) => {
             db.connection.query(
                 `SELECT upc FROM ${db.STORE_PRODUCT_DB} p WHERE not EXISTS 
@@ -52,7 +53,7 @@ getupcForAllChecks() {
             not EXISTS
             (SELECT * FROM ${db.EMPLOYEE_DB}  WHERE  id_employee NOT IN
             ( SELECT  id_employee FROM  ${db.CHECK_DB} WHERE  card_number = P.card_number))`,
-            (err, results) => {
+                (err, results) => {
                     if (err) {
                         console.log(err);
                         reject(err);
