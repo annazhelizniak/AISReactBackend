@@ -147,7 +147,7 @@ exports.CheckDao = class {
         return new Promise(function (resolve) {
             db.connection.query(
                 `SELECT * FROM (((${db.PRODUCT_DB} INNER JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product) ) INNER JOIN ${db.SALE_DB} ON store_product.upc = sale.upc) INNER JOIN ${db.CHECK_DB} ON sale.check_number = check_.check_number
-                WHERE sale.check_number = '${check_number}' ORDER BY print_date`,
+                WHERE sale.check_number = ${check_number} ORDER BY print_date`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
