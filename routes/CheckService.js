@@ -25,7 +25,8 @@ exports.CheckRouter = class {
     }
 
     addCheck(req, res) {
-        if (req.body.check_number && req.body.id_employee && req.body.print_date && req.body.sum_total && req.body.vat) {
+        console.log(req.body)
+        if (req.body.check_number) {
             (async () => {
                 if(req.body.card_number) {
                     await dao.addCheck(req.body.check_number, req.body.id_employee, req.body.card_number, req.body.print_date, req.body.sum_total, req.body.vat)
