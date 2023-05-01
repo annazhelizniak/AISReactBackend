@@ -99,6 +99,17 @@ exports.CheckRouter = class {
         }
     }
 
+    getAllChecksByCashier(req, res) {
+        if (req.params.id_employee) {
+            (async () => {
+                res.json(await dao.getAllChecksByCashier(req.params.id_employee))
+                console.log(req.body )
+            })()
+        } else {
+            console.log(req.body )
+        }
+    }
+
     getAllChecksByCashierForPeriod(req, res) {
         if (req.body.id_employee && req.body.print_date_start && req.body.print_date_end) {
             (async () => {

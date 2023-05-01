@@ -156,6 +156,20 @@ exports.CheckDao = class {
                 })
         })
     }
+    getAllChecksByCashier(id_employee){
+        return new Promise(function (resolve) {
+            db.connection.query(
+                `SELECT * FROM  ${db.CHECK_DB} WHERE id_employee = ${id_employee} ORDER BY print_date`,
+                (err, results) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(false)
+                    }
+                    resolve(results)
+                }
+            )
+        })
+    }
 
     // private static String CHECKS_OF_KASIR_FOR_PERIOD = "SELECT * FROM `check` WHERE id_employee=? AND print_data BETWEEN ? AND ? ORDER BY print_data";
     getAllChecksByCashierForPeriod(id_employee,print_date_start,print_date_end){
