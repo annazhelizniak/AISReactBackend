@@ -89,25 +89,25 @@ exports.AdditionalFunctionsDao = class {
 //3.1! Знайти коди  продуктів  певної категорії, які є в кількох цінах
 
 
-    countAmountofProductsForCertainCategory(category_name) {
-
-        return new Promise(function (resolve) {
-
-            db.connection.query(
-                `SELECT category.category_number, SUM(store_product.products_number) as total_quantity
-FROM ${db.CATEGORY_DB}
-JOIN ${db.PRODUCT_DB} ON category.category_number =product.category_number
-JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product
-WHERE category.category_name = '${category_name}'
-GROUP BY category.category_name;`,
- (err, results) => {
-                    if (err) {
-                        console.log(err)
-                    }
-                    resolve(results)
-                })
-        })
-    }
+//     countAmountofProductsForCertainCategory(category_name) {
+//
+//         return new Promise(function (resolve) {
+//
+//             db.connection.query(
+//                 `SELECT category.category_number, SUM(store_product.products_number) as total_quantity
+// FROM ${db.CATEGORY_DB}
+// JOIN ${db.PRODUCT_DB} ON category.category_number =product.category_number
+// JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product
+// WHERE category.category_name = '${category_name}'
+// GROUP BY category.category_name;`,
+//  (err, results) => {
+//                     if (err) {
+//                         console.log(err)
+//                     }
+//                     resolve(results)
+//                 })
+//         })
+//     }
 
     getProductsInCategoryinDifferentNumber(n) {
 
@@ -134,6 +134,26 @@ GROUP BY category.category_name;`,
                 `SELECT category_number, category_name FROM ${db.CATEGORY_DB} WHERE category_number IN (SELECT category_number 
     FROM ${db.PRODUCT_DB}   WHERE producer='${producer}'   GROUP BY category_number     HAVING COUNT(DISTINCT id_product) > 1 )`,
                 (err, results) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    resolve(results)
+                })
+        })
+    }
+
+    countAmountofProductsForCertainCategory(category_number) {
+
+        return new Promise(function (resolve) {
+
+            db.connection.query(
+                `SELECT category.category_name, SUM(store_product.products_number) as total_quantity
+FROM ${db.CATEGORY_DB}
+JOIN ${db.PRODUCT_DB} ON category.category_number =product.category_number
+JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product
+WHERE category.category_number = '${category_number}'
+GROUP BY category.category_name`,
+ (err, results) => {
                     if (err) {
                         console.log(err)
                     }
