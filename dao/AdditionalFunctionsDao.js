@@ -111,13 +111,12 @@ GROUP BY category.category_name`,
 
 // 3.1! Знайти коди продуктів , певних категорій, які є в різних кількостях
 
-    getProductsInCategoryinDifferentNumber(category_number) {
+    getProductsInCategoryinDifferentNumber(n) {
 
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT id_product, product_name FROM ${db.PRODUCT_DB} WHERE category_number='${category_number}' 
-AND id_product IN (SELECT id_product     FROM ${db.STORE_PRODUCT_DB}     GROUP BY id_product     HAVING COUNT(DISTINCT products_number) > 1 )`,
+                `SELECT * FROM customer_card WHERE card_number IN (SELECT card_number   FROM check_  GROUP BY card_number  HAVING COUNT(DISTINCT id_employee) >= '${n}')`,
                 (err, results) => {
                     if (err) {
                         console.log(err)
