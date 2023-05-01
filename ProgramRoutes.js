@@ -92,7 +92,7 @@ exports.runProgram = function (port) {
     app.delete('/checks/:check_number', checkRouter.deleteCheck)
     app.get('/getMaxCheck', checkRouter.getMaxCheck)
     app.get('/getProductsFromXCheck/:check_number', checkRouter.getProductsFromXCheck)
-    app.get('/getAllChecksByCashier/id_employee', checkRouter.getAllChecksByCashier)
+    app.get('/getAllChecksByCashier/:id_employee', checkRouter.getAllChecksByCashier)
     app.post('/getAllChecksByCashierForPeriod', checkRouter.getAllChecksByCashierForPeriod)
     app.post('/getAllChecksByAllCashiersForPeriod', checkRouter.getAllChecksByAllCashiersForPeriod)
     app.post('/getSumChecksByCashierForPeriod', checkRouter.getSumChecksByCashierForPeriod)
