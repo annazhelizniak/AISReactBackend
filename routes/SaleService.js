@@ -32,7 +32,7 @@ exports.SaleRouter = class {
                 res.send(req.body)
             })()
         } else {
-            console.log(req.body)
+            console.log("err")
         }
     }
 

@@ -35,7 +35,7 @@ exports.CheckRouter = class {
                 res.send("Success")
             })()
         } else {
-            console.log(req.body )
+            console.log("error check")
         }
     }
 
