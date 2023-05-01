@@ -68,7 +68,7 @@ getupcForAllChecks() {
     getkasirsForAllClients() {
         return new Promise((resolve, reject) => {
             db.connection.query(
-                `SELECT   id_employee FROM  ${db.EMPLOYEE_DB} p WHERE
+                `SELECT   * FROM  ${db.EMPLOYEE_DB} p WHERE
             not EXISTS
             (SELECT * FROM ${db.CUSTOMER_CARD_DB}  WHERE  card_number NOT IN
             ( SELECT  card_number FROM  ${db.CHECK_DB} WHERE  id_employee= P.id_employee))`,
