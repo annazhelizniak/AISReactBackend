@@ -29,7 +29,7 @@ exports.AdditionalFunctionsDao = class {
     getupcForAllChecks() {
         return new Promise((resolve, reject) => {
             db.connection.query(
-                `SELECT upc FROM ${db.STORE_PRODUCT_DB} p WHERE not EXISTS 
+                `SELECT * FROM ${db.STORE_PRODUCT_DB} p WHERE not EXISTS 
                 (SELECT * FROM ${db.CHECK_DB} WHERE check_number NOT IN 
                 ( SELECT check_number FROM ${db.SALE_DB}  WHERE upc = P.upc))`,
                 (err, results) => {
@@ -94,12 +94,12 @@ exports.AdditionalFunctionsDao = class {
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT category.category_name, SUM(store_product.products_number) as total_quantity
+                `SELECT category.category_number, SUM(store_product.products_number) as total_quantity
 FROM ${db.CATEGORY_DB}
 JOIN ${db.PRODUCT_DB} ON category.category_number =product.category_number
 JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product
 WHERE category.category_name = '${category_name}'
-GROUP BY category.category_name`,
+GROUP BY category.category_name;`,
  (err, results) => {
                     if (err) {
                         console.log(err)
