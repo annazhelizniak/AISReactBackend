@@ -32,7 +32,7 @@ exports.CheckRouter = class {
                 }else{
                     await dao.addCheck1(req.body.check_number, req.body.id_employee, req.body.print_date, req.body.sum_total, req.body.vat)
                 }
-                res.send("Success")
+                res.send(req.body.check_number)
             })()
         } else {
             console.log("error check")
