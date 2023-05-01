@@ -70,7 +70,7 @@ exports.AdditionalFunctionsDao = class {
         return new Promise((resolve, reject) => {
             db.connection.query(
                 `SELECT   * FROM  ${db.EMPLOYEE_DB} p WHERE
-            NOT EXISTS
+            empl_role="cashier" AND NOT EXISTS
             (SELECT * FROM ${db.CUSTOMER_CARD_DB}  WHERE  card_number NOT IN
             ( SELECT  card_number FROM  ${db.CHECK_DB} WHERE  id_employee= P.id_employee))`,
 
