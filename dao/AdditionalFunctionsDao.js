@@ -49,8 +49,8 @@ exports.AdditionalFunctionsDao = class {
     getCustomersFromAllKasirs() {
         return new Promise((resolve, reject) => {
             db.connection.query(
-                `SELECT  card_number FROM  ${db.CUSTOMER_CARD_DB} p WHERE
-            not EXISTS
+                `SELECT  * FROM  ${db.CUSTOMER_CARD_DB} p WHERE
+            NOT EXISTS
             (SELECT * FROM ${db.EMPLOYEE_DB}  WHERE  id_employee NOT IN
             ( SELECT  id_employee FROM  ${db.CHECK_DB} WHERE  card_number = P.card_number))`,
                 (err, results) => {
