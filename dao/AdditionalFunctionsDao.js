@@ -25,7 +25,7 @@ exports.AdditionalFunctionsDao = class {
 // ( SELECT upc FROM ${db.SALE_DB} P WHERE NOT EXISTS
     //(SELECT check_number FROM ${db.CHECK_DB} WHERE check_number NOT IN
 // ( SELECT check_number FROM ${db.SALE_DB}  WHERE check_number = P.check_number)))`,
-
+//знайти товари що є у всіх чеках
     getupcForAllChecks() {
         return new Promise((resolve, reject) => {
             db.connection.query(
@@ -65,7 +65,7 @@ exports.AdditionalFunctionsDao = class {
         });
     }
 
-// Знайти
+// Знайти касирів що видавали чек всім клієнтам
     getkasirsForAllClients() {
         return new Promise((resolve, reject) => {
             db.connection.query(
@@ -86,16 +86,21 @@ exports.AdditionalFunctionsDao = class {
         });
     }
 
-//3.1! Знайти коди та назви продуктів  певної категорії, які є в кількох цінах
+//3.1! Знайти коди  продуктів  певної категорії, які є в кількох цінах
 
 
-    getProductsInCategoryinDifferentPrice(category_number) {
+    countAmountofProductsForCertainCategory(category_name) {
 
         return new Promise(function (resolve) {
 
             db.connection.query(
-                `SELECT id_product, product_name FROM ${db.PRODUCT_DB} WHERE category_number='${category_number}' AND id_product IN (SELECT id_product     FROM ${db.STORE_PRODUCT_DB}     GROUP BY id_product  HAVING COUNT(DISTINCT selling_price) > 1 ))`,
-                (err, results) => {
+                `SELECT category.category_name, SUM(store_product.products_number) as total_quantity
+FROM ${db.CATEGORY_DB}
+JOIN ${db.PRODUCT_DB} ON category.category_number =product.category_number
+JOIN ${db.STORE_PRODUCT_DB} ON product.id_product = store_product.id_product
+WHERE category.category_name = '${category_name}'
+GROUP BY category.category_name`,
+ (err, results) => {
                     if (err) {
                         console.log(err)
                     }
@@ -104,7 +109,7 @@ exports.AdditionalFunctionsDao = class {
         })
     }
 
-// 3.1! Знайти коди та назви продуктів , певних категорій, які є в різних кількостях
+// 3.1! Знайти коди продуктів , певних категорій, які є в різних кількостях
 
     getProductsInCategoryinDifferentNumber(category_number) {
 

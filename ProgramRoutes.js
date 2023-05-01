@@ -126,9 +126,8 @@ exports.runProgram = function (port) {
     app.post('/sales', saleRouter.addSale)
     app.put('/sales', saleRouter.updateSale)
     app.delete('/sales', saleRouter.deleteSale)
-//additional
-    //todo test
-    app.get('/additionalGroupBy1/:category_number', additionalFunctionsRouter.getProductsInCategoryinDifferentPrice)
+
+    app.get('/additionalGroupBy1/:category_name', additionalFunctionsRouter.countAmountofProductsForCertainCategory)
     app.get('/additionalGroupBy2/:category_number', additionalFunctionsRouter.getProductsInCategoryinDifferentNumber)
     app.get('/additionalGroupBy3/:producer', additionalFunctionsRouter.getCategoryinDifferentProductsserteinProducer)
     app.get('/additionalNotNot1', additionalFunctionsRouter.getupcForAllChecks)

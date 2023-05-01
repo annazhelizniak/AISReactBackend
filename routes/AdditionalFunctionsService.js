@@ -13,11 +13,11 @@ exports.AdditionalFunctionsRouter = class {
     }
 
 
-    getProductsInCategoryinDifferentPrice(req, res) {
+    countAmountofProductsForCertainCategory(req, res) {
         let internalDAO = dao
-        if (req.params.category_number) {
+        if (req.params.category_name) {
             (async () => {
-                res.json(await internalDAO.getProductsInCategoryinDifferentPrice(req.params.category_number))
+                res.json(await internalDAO.countAmountofProductsForCertainCategory(req.params.category_name))
 
             })()
         } else {
